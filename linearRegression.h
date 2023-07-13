@@ -22,7 +22,7 @@ Slope calculateLinearRegression(std::vector<Point> points) {
   if (points.size() < 2)
     return Slope {};
   
-  /// Calculate Pearon's Correlation Coefficient (r)
+  /// Calculate Pearson's Correlation Coefficient (r)
   //
   //        Σ((x-x̄)(y-ȳ))
   // r = ───────────────────
