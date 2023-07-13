@@ -1,0 +1,3 @@
+# math
+
+Linear regression calculation
