@@ -4,17 +4,17 @@
 
 class Point {
 public:
-  float x;
-  float y;
-  Point(float x, float y) : x{x}, y{y} {}
+  double x;
+  double y;
+  Point(double x, double y) : x{x}, y{y} {}
 };
 
 class Slope {
 public:
-  float m;
-  float b;
+  double m;
+  double b;
   Slope() = default;
-  Slope(float m, float b) : m{m}, b{b} {}
+  Slope(double m, double b) : m{m}, b{b} {}
 };
 
 Slope calculateLinearRegression(std::vector<Point> points) {
@@ -30,7 +30,7 @@ Slope calculateLinearRegression(std::vector<Point> points) {
   //
   
   int pointsSize = (int)points.size();
-  float xMean = 0.f, yMean = 0.f; // the means of all x and y values
+  double xMean = 0, yMean = 0; // the means of all x and y values
   bool notZero = false, notInfinite = false; // slope edge cases
 
   for (auto& point : points) {
@@ -47,20 +47,20 @@ Slope calculateLinearRegression(std::vector<Point> points) {
   xMean /= pointsSize;
   yMean /= pointsSize;
 
-  float numerator = 0.f;  // the numerator of the r coefficient
-  float denomSum1 = 0.f;  // the sum of all (x - x̄)²
-  float denomSum2 = 0.f;  // the sum of all (y - ȳ)²
+  double numerator = 0;  // the numerator of the r coefficient
+  double denomSum1 = 0;  // the sum of all (x - x̄)²
+  double denomSum2 = 0;  // the sum of all (y - ȳ)²
 
   for (auto& point : points) {
-    float xSubMean = point.x - xMean;
-    float ySubMean = point.y - yMean;
+    double xSubMean = point.x - xMean;
+    double ySubMean = point.y - yMean;
 
     numerator += xSubMean * ySubMean;
     denomSum1 += xSubMean * xSubMean;
     denomSum2 += ySubMean * ySubMean;
   }
 
-  float r = numerator / sqrt(denomSum1 * denomSum2); // the correlation coefficient or "r"
+  double r = numerator / sqrt(denomSum1 * denomSum2); // the correlation coefficient or "r"
 
   /// Calculate Linear Regression
   //
@@ -77,12 +77,12 @@ Slope calculateLinearRegression(std::vector<Point> points) {
   //         n-1            n-1
   //
 
-  float nSubOne = pointsSize - 1;
-  float yStdDev = sqrt(denomSum2 / nSubOne);
-  float xStdDev = sqrt(denomSum1 / nSubOne);
+  double nSubOne = pointsSize - 1;
+  double yStdDev = sqrt(denomSum2 / nSubOne);
+  double xStdDev = sqrt(denomSum1 / nSubOne);
   
-  float b = r * (yStdDev / xStdDev);
-  float a = yMean - b * xMean;
+  double b = r * (yStdDev / xStdDev);
+  double a = yMean - b * xMean;
 
   return Slope {b, a};
 }
