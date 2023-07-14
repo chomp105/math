@@ -26,7 +26,7 @@ Slope calculateLinearRegression(std::vector<Point> points) {
   //
   //        Σ((x-x̄)(y-ȳ))
   // r = ───────────────────
-  //     √(Σ(x-ȳ)² Σ(y-ȳ)²))
+  //     √(Σ(x-x̄)² Σ(y-ȳ)²))
   //
   
   int pointsSize = (int)points.size();
