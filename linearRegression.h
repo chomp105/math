@@ -18,8 +18,9 @@ public:
 };
 
 Slope calculateLinearRegression(std::vector<Point> points) {
+  int pointsSize = (int)points.size();
   
-  if (points.size() < 2)
+  if (pointsSize < 2)
     return Slope {};
   
   /// Calculate Pearson's Correlation Coefficient (r)
@@ -29,7 +30,6 @@ Slope calculateLinearRegression(std::vector<Point> points) {
   //     √(Σ(x-x̄)² Σ(y-ȳ)²))
   //
   
-  int pointsSize = (int)points.size();
   double xMean = 0, yMean = 0; // the means of all x and y values
   bool notZero = false, notInfinite = false; // slope edge cases
 
