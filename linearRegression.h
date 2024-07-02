@@ -42,7 +42,7 @@ Slope calculateLinearRegression(std::vector<Point> points) {
   }
 
   if (!notZero) return Slope {0, points[0].y};
-  if (!notInfinite) return Slope {INFINITY, points[0].x};
+  if (!notInfinite) return Slope {INFINITY, 0};
 
   xMean /= pointsSize;
   yMean /= pointsSize;
